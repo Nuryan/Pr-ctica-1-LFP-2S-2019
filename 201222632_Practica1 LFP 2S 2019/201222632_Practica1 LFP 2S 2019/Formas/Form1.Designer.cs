@@ -28,33 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaPestañaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarArchivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarArchivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manualTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.botonAnalizar = new System.Windows.Forms.Button();
+            this.arbolVisualizar = new System.Windows.Forms.TreeView();
+            this.calendario1 = new System.Windows.Forms.MonthCalendar();
+            this.infoDetallada = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // tabControl1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.tabControl1.Location = new System.Drawing.Point(12, 27);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(516, 690);
+            this.tabControl1.TabIndex = 1;
             // 
             // archivoToolStripMenuItem
             // 
@@ -66,6 +65,31 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // nuevaPestañaToolStripMenuItem
+            // 
+            this.nuevaPestañaToolStripMenuItem.Name = "nuevaPestañaToolStripMenuItem";
+            this.nuevaPestañaToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.nuevaPestañaToolStripMenuItem.Text = "Nueva Pestaña";
+            this.nuevaPestañaToolStripMenuItem.Click += new System.EventHandler(this.nuevaPestañaToolStripMenuItem_Click);
+            // 
+            // cargarArchivoToolStripMenuItem
+            // 
+            this.cargarArchivoToolStripMenuItem.Name = "cargarArchivoToolStripMenuItem";
+            this.cargarArchivoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.cargarArchivoToolStripMenuItem.Text = "Cargar Archivo";
+            // 
+            // guardarArchivoToolStripMenuItem
+            // 
+            this.guardarArchivoToolStripMenuItem.Name = "guardarArchivoToolStripMenuItem";
+            this.guardarArchivoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.guardarArchivoToolStripMenuItem.Text = "Guardar Archivo";
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
             // 
             // ayudaToolStripMenuItem
             // 
@@ -95,65 +119,57 @@
             this.manualTécnicoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.manualTécnicoToolStripMenuItem.Text = "Manual Técnico";
             // 
-            // nuevaPestañaToolStripMenuItem
+            // menuStrip1
             // 
-            this.nuevaPestañaToolStripMenuItem.Name = "nuevaPestañaToolStripMenuItem";
-            this.nuevaPestañaToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.nuevaPestañaToolStripMenuItem.Text = "Nueva Pestaña";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // cargarArchivoToolStripMenuItem
+            // botonAnalizar
             // 
-            this.cargarArchivoToolStripMenuItem.Name = "cargarArchivoToolStripMenuItem";
-            this.cargarArchivoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.cargarArchivoToolStripMenuItem.Text = "Cargar Archivo";
+            this.botonAnalizar.Location = new System.Drawing.Point(540, 42);
+            this.botonAnalizar.Name = "botonAnalizar";
+            this.botonAnalizar.Size = new System.Drawing.Size(192, 66);
+            this.botonAnalizar.TabIndex = 2;
+            this.botonAnalizar.Text = "Analizar";
+            this.botonAnalizar.UseVisualStyleBackColor = true;
+            this.botonAnalizar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // guardarArchivoToolStripMenuItem
+            // arbolVisualizar
             // 
-            this.guardarArchivoToolStripMenuItem.Name = "guardarArchivoToolStripMenuItem";
-            this.guardarArchivoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.guardarArchivoToolStripMenuItem.Text = "Guardar Archivo";
+            this.arbolVisualizar.Location = new System.Drawing.Point(744, 27);
+            this.arbolVisualizar.Name = "arbolVisualizar";
+            this.arbolVisualizar.Size = new System.Drawing.Size(244, 255);
+            this.arbolVisualizar.TabIndex = 3;
             // 
-            // salirToolStripMenuItem
+            // calendario1
             // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
+            this.calendario1.Location = new System.Drawing.Point(540, 120);
+            this.calendario1.Name = "calendario1";
+            this.calendario1.TabIndex = 4;
             // 
-            // tabControl1
+            // infoDetallada
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 27);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(715, 642);
-            this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(707, 616);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.infoDetallada.Location = new System.Drawing.Point(540, 294);
+            this.infoDetallada.Name = "infoDetallada";
+            this.infoDetallada.Size = new System.Drawing.Size(448, 423);
+            this.infoDetallada.TabIndex = 5;
+            this.infoDetallada.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.infoDetallada);
+            this.Controls.Add(this.calendario1);
+            this.Controls.Add(this.arbolVisualizar);
+            this.Controls.Add(this.botonAnalizar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -162,15 +178,13 @@
             this.Text = "Práctica 1, LFP 2S 2019";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaPestañaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargarArchivoToolStripMenuItem;
@@ -180,9 +194,11 @@
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manualTécnicoToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Button botonAnalizar;
+        private System.Windows.Forms.TreeView arbolVisualizar;
+        private System.Windows.Forms.MonthCalendar calendario1;
+        private System.Windows.Forms.RichTextBox infoDetallada;
     }
 }
 
