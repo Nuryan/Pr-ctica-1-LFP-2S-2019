@@ -21,7 +21,7 @@ namespace _201222632_Practica1_LFP_2S_2019
             InitializeComponent();
 
             pestañas = new Pestaña(tabControl1);
-            anali = new Analizador(tabControl1, botonAnalizar, calendario1, arbolVisualizar, infoDetallada);
+            anali = new Analizador(tabControl1, botonAnalizar, calendario1, arbolVisualizar, infoDetallada, pestañas.getTextos());
         }
 
         private void nuevaPestañaToolStripMenuItem_Click(object sender, EventArgs e)

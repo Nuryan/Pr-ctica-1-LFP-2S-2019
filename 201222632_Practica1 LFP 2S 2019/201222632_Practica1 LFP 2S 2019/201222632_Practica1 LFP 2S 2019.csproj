@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Clases\Analizador.cs" />
     <Compile Include="Clases\Pestaña.cs" />
+    <Compile Include="Clases\Token.cs" />
     <Compile Include="Formas\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

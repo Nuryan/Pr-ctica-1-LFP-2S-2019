@@ -10,7 +10,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
 {
     class Pestaña
     {
-        public ArrayList pestañas = new ArrayList();
+        //public ArrayList pestañas = new ArrayList();
         public ArrayList textos = new ArrayList();
         private int numPestañas = 0;
         private TabControl tabControlGeneral;
@@ -53,18 +53,15 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
 
             tabControlGeneral.SelectedTab = pagina;
 
+            textos.Add(texto);
+
             numPestañas++;
                                     
         }
 
-        private void añadirPestaña(TabPage pagina)
+        public ArrayList getTextos()
         {
-            pestañas.Add(pagina);
-        }
-
-        public TabPage getPestaña(int numPestaña)
-        {
-            return (TabPage)pestañas[numPestañas];
+            return textos;
         }
 
         private void clickDerecho(object sender, MouseEventArgs e)
