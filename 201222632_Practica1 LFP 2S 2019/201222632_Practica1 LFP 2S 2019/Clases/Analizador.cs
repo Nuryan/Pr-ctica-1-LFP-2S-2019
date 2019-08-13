@@ -17,7 +17,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
         private RichTextBox infoDetalle;
         private ArrayList textos;
 
-        private Token[] tokens;
+        private ArrayList tokens;
         private int estado, fila, columna, idToken, enError;
         private string lexema;
 
@@ -62,10 +62,13 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
                     infoDetalle.Text = infoDetalle.Text + "     " + (Int32)analizando[i] + "     no se hallo en los caracteres \n";
                 }
             }
+            analizar(analizando);
+            infoDetalle.Text = infoDetalle.Text + "\n\n\n  "+fila;
         }
 
-        private void analizar()
+        private void analizar(String analizando)
         {
+            int i;
             estado = 0;
             fila = 0;
             columna = 0;
@@ -73,17 +76,35 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
 
             string concatenando = "";
 
-            switch (estado)
-            { 
-                case 0:
+            for (i = 0; i<analizando.Length; i++)
+            {
+                setEstado(analizando[i]);
 
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                default:
-                    break;
+                #region añade nueva linea
+
+                if ((char)analizando[i] == 10)
+                {
+                    fila++;
+                    columna = 0;
+                }
+
+                #endregion
+
+
+                switch (getEstado())
+                {
+                    case 0:
+                        if (enError ==1)
+                        {
+                            enError =
+                                0;
+                        }
+                        break;
+                    case 1:
+                        break;
+                                           
+                }
+
             }
         }
 
@@ -91,6 +112,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
         {
             switch (grafo)
             {
+                #region Carácteres del estado 0
                 case 'a':
                 case 'á':
                 case 'b':
@@ -165,18 +187,22 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
                 case '7':
                 case '8':
                 case '9':
+                    #endregion
                     estado = 0;
                     break;
+                #region Carácteres del estado 1
                 case '{':
                 case '}':
                 case ':':
                 case '"':
+                    #endregion
                     estado = 1;
                     break;
+                #region Carácteres que mantienen el estado actual
                 case (char)9:
                 case (char)10:
                 case (char)32:
-                    estado = 0;
+                    #endregion
                     break;
                 default:
                     enError = 1;
