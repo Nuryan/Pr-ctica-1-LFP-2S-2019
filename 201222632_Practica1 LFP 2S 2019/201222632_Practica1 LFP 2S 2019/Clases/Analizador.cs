@@ -18,7 +18,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
         private ArrayList textos;
 
         private ArrayList tokens;
-        private int estado, fila, columna, idToken, enError;
+        private int estado, fila, columna, idToken, enError, esTerminal;
         private string lexema;
 
         private char[] grafosPermitidos = {'a', 'á', 'b', 'c', 'd', 'e','é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o',
@@ -52,18 +52,21 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
 
             for (i = 0; i<analizando.Length; i++)
             {
-                //infoDetalle.Text = infoDetalle.Text + analizando[i] + "\n";
-                if (caracterPermitido(analizando[i])==1)
-                {
-                    infoDetalle.Text = infoDetalle.Text + "     "+(Int32)analizando[i]+"     se hallo en los caracteres \n";
-                }
-                else
-                {
-                    infoDetalle.Text = infoDetalle.Text + "     " + (Int32)analizando[i] + "     no se hallo en los caracteres \n";
-                }
+                setEstado(analizando[i]);
+                infoDetalle.Text = infoDetalle.Text + analizando[i]+ "  y su estado es    "+ getEstado()+ " y se han encontrado "+enError+"\n";
             }
             analizar(analizando);
-            infoDetalle.Text = infoDetalle.Text + "\n\n\n  "+fila;
+            infoDetalle.Text = infoDetalle.Text + "\n\n\n  "+fila+ "    con una cantidad de tokens de: "+tokens.Count;
+            infoDetalle.Text = infoDetalle.Text + "\n\n\n  ";
+            infoDetalle.Text = infoDetalle.Text + "\n\n\n  ";
+
+            Token prueba;
+            for (i = 0; i<tokens.Count; i++)
+            {
+                prueba = (Token)tokens[i];
+                infoDetalle.Text = infoDetalle.Text +"Token id: "+ prueba.getIdToken()+" y contiene "+prueba.getLexema()+"\n";
+            }
+            
         }
 
         private void analizar(String analizando)
@@ -73,6 +76,8 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
             fila = 0;
             columna = 0;
             idToken = 0;
+            esTerminal = 0;
+            tokens = new ArrayList();
 
             string concatenando = "";
 
@@ -90,29 +95,45 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
 
                 #endregion
 
-
                 switch (getEstado())
                 {
                     case 0:
-                        if (enError ==1)
+                    case 1:
+                    case 4:
+                    case 6:
+
+                        concatenando = concatenando + analizando[i];
+                        break;
+                    case 2:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 9:
+                        //32 espacio, 10 nueva linea, 9 tabulacion
+                        if (analizando[i] != 32 && analizando[i] != 10 && analizando[i] != 9)
                         {
-                            enError =
-                                0;
+                            if (esTerminal == 1 && concatenando.Length>0)
+                            {
+                                tokens.Add(new Token(idToken, fila, columna, concatenando, enError));
+
+                                concatenando = "";
+                                enError = 0;
+                                esTerminal = 0;
+                            }
+                            concatenando = concatenando + analizando[i];
                         }
                         break;
-                    case 1:
-                        break;
-                                           
                 }
-
             }
         }
+
 
         private void setEstado(char grafo)
         {
             switch (grafo)
             {
-                #region Carácteres del estado 0
+                #region abecedario 
                 case 'a':
                 case 'á':
                 case 'b':
@@ -177,6 +198,31 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
                 case 'X':
                 case 'Y':
                 case 'Z':
+                    #endregion
+                    esTerminal = 0;
+                    switch (estado)
+                    {
+                        case 0:
+                            estado = 1;
+                            break;
+                        case 1:
+                        case 9:
+                        case 5:
+                        case 8:
+                            estado = 0;
+                            break;
+                        case 4:
+                            estado = 6;
+                            break;
+                        case 6:
+                            estado = 4;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
+                    break;
+                #region numeros
                 case '0':
                 case '1':
                 case '2':
@@ -188,25 +234,146 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
                 case '8':
                 case '9':
                     #endregion
-                    estado = 0;
+                    esTerminal = 0;
+                    switch (estado)
+                    {
+                        case 2:
+                            estado = 3;
+                            break;
+                        case 3:
+                            estado = 2;
+                            break;
+                        case 4:
+                            estado = 6;
+                            break;
+                        case 6:
+                            estado = 4;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
                     break;
-                #region Carácteres del estado 1
                 case '{':
-                case '}':
-                case ':':
-                case '"':
-                    #endregion
-                    estado = 1;
+                    esTerminal = 1;
+                    switch (estado)
+                    {
+                        case 2:
+                        case 3:
+                        case 7:
+                            estado = 5;
+                            break;
+                        case 4:
+                            estado = 6;
+                            break;
+                        case 6:
+                            estado = 4;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
                     break;
-                #region Carácteres que mantienen el estado actual
+                case '}':
+                    esTerminal = 1;
+                    switch (estado)
+                    {
+                        case 8:
+                            estado = 9;
+                            break;
+                        case 9:
+                            estado = 8;
+                            break;
+                        case 4:
+                            estado = 6;
+                            break;
+                        case 6:
+                            estado = 4;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
+                    break;
+                case ':':
+                    esTerminal = 1;
+                    switch (estado)
+                    {
+                        case 0:
+                        case 1:
+                            estado = 2;
+                            break;
+                        case 4:
+                            estado = 6;
+                            break;
+                        case 6:
+                            estado = 4;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
+                    break;
+                case '"':
+                    esTerminal = 1;
+                    switch (estado)
+                    {
+                        case 2:
+                            estado = 4;
+                            break;
+                        case 4:
+                        case 6:
+                            estado = 7;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
+                    break;
+                case ';':
+                    esTerminal = 1;
+                    switch (estado)
+                    {
+                        case 7:
+                            estado = 8;
+                            break;
+                        case 4:
+                        case 6:
+                            estado = 7;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
+                    break;
+                //32 espacio, 10 nueva linea, 9 tabulacion
                 case (char)9:
                 case (char)10:
                 case (char)32:
-                    #endregion
+                    switch (estado)
+                    {
+
+                        case 4:
+                            estado = 6;
+                            break;
+                        case 6:
+                            estado = 4;
+                            break;
+                    }
                     break;
                 default:
-                    enError = 1;
-                    estado = 0;
+                    switch (estado)
+                    {
+                        case 4:
+                            estado = 6;
+                            break;
+                        case 6:
+                            estado = 4;
+                            break;
+                        default:
+                            enError = 1;
+                            break;
+                    }
                     break;
             }
         }

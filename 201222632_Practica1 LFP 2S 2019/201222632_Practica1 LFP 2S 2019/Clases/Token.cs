@@ -16,7 +16,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
         private int tipo;
 
         private string[] palabrasReservadas = {"Planificador", "Año", "Mes", "Dia","Descripcion","Imagen"};
-        private string[] simbolos = {"{", "}",":", "\""};
+        private string[] simbolos = {"{", "}",":",";" ,"\""};
 
         public Token(int idToken, int fila, int columna, string lexema, int tipo )
         {
