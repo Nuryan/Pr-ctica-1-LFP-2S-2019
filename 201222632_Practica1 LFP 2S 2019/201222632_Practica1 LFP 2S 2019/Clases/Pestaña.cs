@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,6 +58,41 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
 
             numPestañas++;
                                     
+        }
+
+        public void cargarArchivo()
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+
+            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.Filter = "archivos de lenguajes(*.ly)|*.ly";
+            openFileDialog.RestoreDirectory = false;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Get the path of specified file
+                filePath = openFileDialog.FileName;
+
+                //Read the contents of the file into a stream
+                var fileStream = openFileDialog.OpenFile();
+
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    fileContent = reader.ReadToEnd();
+                }
+
+                int i;
+                for (i = 0; i < textos.Count; i++)
+                {
+                    if (((RichTextBox)textos[i]).TabIndex == tabControlGeneral.SelectedTab.TabIndex)
+                    {
+                         ((RichTextBox)textos[i]).Text = fileContent;
+                    }
+                }
+            }
         }
 
         public ArrayList getTextos()

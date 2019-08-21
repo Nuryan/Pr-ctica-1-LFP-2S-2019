@@ -78,6 +78,7 @@
             this.cargarArchivoToolStripMenuItem.Name = "cargarArchivoToolStripMenuItem";
             this.cargarArchivoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.cargarArchivoToolStripMenuItem.Text = "Cargar Archivo";
+            this.cargarArchivoToolStripMenuItem.Click += new System.EventHandler(this.cargarArchivoToolStripMenuItem_Click);
             // 
             // guardarArchivoToolStripMenuItem
             // 

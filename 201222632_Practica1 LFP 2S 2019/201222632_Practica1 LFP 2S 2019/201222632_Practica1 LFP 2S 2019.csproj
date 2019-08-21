@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Clases\Actividad.cs" />
     <Compile Include="Clases\Analizador.cs" />
+    <Compile Include="Clases\ArchivoHTML.cs" />
     <Compile Include="Clases\Imagen.cs" />
     <Compile Include="Clases\Pestaña.cs" />
     <Compile Include="Clases\Token.cs" />

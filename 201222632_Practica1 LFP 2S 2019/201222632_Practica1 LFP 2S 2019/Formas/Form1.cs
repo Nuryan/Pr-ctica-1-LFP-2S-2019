@@ -33,5 +33,12 @@ namespace _201222632_Practica1_LFP_2S_2019
         {
 
         }
+
+        private void cargarArchivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pestañas.nuevaPestaña();
+
+            pestañas.cargarArchivo();
+        }
     }
 }

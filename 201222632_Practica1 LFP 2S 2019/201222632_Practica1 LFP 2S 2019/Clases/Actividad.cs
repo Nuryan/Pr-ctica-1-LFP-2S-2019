@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,25 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
         private int año;
         private int mes;
         private int dia;
-        private String descripcion;
-        
-        public Actividad(int idActividad, int año, int mes, int dia, String descripcion)
+        private String descripcion, padre;
+
+        private ArrayList tokens;
+
+        public Actividad(int idActividad, int año, int mes, int dia, String descripcion, String padre)
         {
             this.idActividad = idActividad;
             this.año = año;
             this.mes = mes;
             this.dia = dia;
             this.descripcion = descripcion;
+            this.padre = padre;
         }
         
+        public Actividad(ArrayList tokens)
+        {
+            this.tokens = tokens;
+        }
+
         public string Descripcion
         {
             get
@@ -85,6 +94,19 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
             set
             {
                 idActividad = value;
+            }
+        }
+
+        public string Padre
+        {
+            get
+            {
+                return padre;
+            }
+
+            set
+            {
+                padre = value;
             }
         }
     }
