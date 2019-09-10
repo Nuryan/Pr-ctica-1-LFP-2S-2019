@@ -37,7 +37,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
 
         private void setToken(string lexema)
         {
-            this.token = "Cadena";
+            this.token = "cadena";
             double num;
             int i;
 
@@ -46,6 +46,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
                 if ((lexema.ToLower()).Equals(simbolos[i]))
                 {
                     this.token = "Simbolo "+simbolos[i];
+
                 }
             }
 
@@ -87,7 +88,7 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
                 this.identi = 2;
             }
 
-            if (getToken().Equals("Cadena"))
+            if (getToken().Equals("cadena"))
             {
                 this.identi = 3;
             }

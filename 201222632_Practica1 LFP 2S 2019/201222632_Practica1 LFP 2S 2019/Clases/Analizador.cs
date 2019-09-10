@@ -103,11 +103,69 @@ namespace _201222632_Practica1_LFP_2S_2019.Clases
         private void ordenarActividades()
         {
             String padre = "", descripcion = "";
-            int año, mes, dia, aux1, aux2, i, a;
+            int año = -1, mes = -1, dia = -1, aux1 = -1, aux2 = -1, i, a;
+            Token auxiliar;
 
             for (i = 0; i<tokens.Count; i++)
             {
+                auxiliar = (Token)tokens[i];
+                switch (auxiliar.getIdenti())
+                {
+                    case 0:
+                        aux1 = 3;
+                        aux2 = 0;
+                        break;
+                    case 7:
+                        aux1 = 2;
+                        aux2 = 7;
+                        break;
+                    case 8:
+                        aux1 = 2;
+                        aux2 = 8;
+                        break;
+                    case 9:
+                        aux1 = 2;
+                        aux2 = 9;
+                        break;
+                    case 10:
+                        aux1 = 3;
+                        aux2 = 10;
+                        break;
+                    case 11:
+                        aux1 = 3;
+                        aux2 = 11;
+                        break;
+                }
 
+                if (aux1 == 0)
+                {
+                    if (auxiliar.getIdenti() == 3)
+                    {
+                        switch (aux2)
+                        {
+                            case 0:
+                                break;
+                            case 10:
+                                break;
+                            case 11:
+                                break;
+                        }
+                    }
+                    if (auxiliar.getIdenti() == 12)
+                    {
+                        switch (aux2)
+                        {
+                            case 7:
+                                break;
+                            case 8:
+                                break;
+                            case 9:
+                                break;
+                        }
+                    }
+                }
+
+                aux1--;
             }
 
         }
